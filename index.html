@@ -2,13 +2,15 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>לוח ראות</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
   --araz-bg:     #d6e9f8;
   --araz-border: #5fa3d4;
   --araz-badge:  #1e6fad;
@@ -76,7 +78,9 @@ body {
   color: #fff;
   display: flex; align-items: center;
   justify-content: space-between;
-  padding: 0 12px; height: 54px;
+  padding: 0 12px;
+  padding-top: var(--sat);
+  height: calc(54px + var(--sat));
   position: sticky; top: 0; z-index: 100;
   gap: 8px; flex-shrink: 0;
 }
@@ -197,7 +201,8 @@ body {
 
 /* ═══ CALENDAR ═══ */
 .cal-wrap {
-  max-width: 1120px; margin: 10px auto 80px; padding: 0 10px;
+  max-width: 1120px; margin: 10px auto; padding: 0 10px;
+  padding-bottom: calc(80px + var(--sab));
   width: 100%;
 }
 .cal-card {
@@ -285,6 +290,7 @@ body {
   display: none;
   position: fixed; bottom: 0; left: 0; right: 0;
   background: var(--ink); padding: 10px 16px;
+  padding-bottom: calc(10px + var(--sab));
   gap: 8px; z-index: 200;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
 }
@@ -381,7 +387,7 @@ body {
 
 /* ═══ TOAST ═══ */
 #toast {
-  position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: calc(90px + var(--sab)); left: 50%; transform: translateX(-50%);
   background: var(--ink); color: #fff;
   padding: 10px 20px; border-radius: 24px;
   font-size: 14px; font-weight: 600;
